@@ -1,0 +1,9 @@
+table Foo {
+    id: ulong;
+    text: string;
+}
+table Bar {
+    id: ulong;
+    text: string;
+    fooId: ulong;
+}
