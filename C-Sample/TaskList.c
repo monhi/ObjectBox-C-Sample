@@ -33,7 +33,7 @@ obx_err		parse_action	(char* arg, obx_id* id);
 int			do_action_new	(OBX_box* box, char*	arg);
 int			do_action_done	(OBX_box* box, obx_id	arg);
 int			do_action_list	(OBX_box* box, OBX_query* query);
-void		do_action_help	(char* program_path);
+void		do_action_help	();
 void		date_to_str		(char* buff, uint64_t timestamp);
 int			parse_text		(char* arg, char** outText);
 uint64_t	timestamp_now	();
@@ -77,8 +77,7 @@ OBX_store* store_open()
 }
 
 
-
-int TaskList(int argc, char* argv[])
+int TaskList()
 {
 	obx_err		rc = 0;
 	int			action;
@@ -98,7 +97,7 @@ int TaskList(int argc, char* argv[])
 		return 1;
 	}
 
-	do_action_help(argv[0]);
+	do_action_help();
 
 	OBX_box* task_box = obx_box(store, Task_ENTITY_ID);
 
@@ -145,6 +144,9 @@ int TaskList(int argc, char* argv[])
 			break;
 		case ACTION_EXIT:
 			running = false;
+			break;
+		case ACTION_HELP:
+			do_action_help();
 			break;
 		default:
 			rc = 42;
@@ -333,12 +335,12 @@ clean_up:
 	return rc;
 }
 
-void do_action_help(char* program_path)
+void do_action_help()
 {
 #ifndef _MSC_VER  // Windows is not UNIX
 	program_path = basename(program_path);
 #endif
-	printf("usage: %s\n", program_path);
+	printf("usage: \n");
 	printf("    %-30s %s\n", "text of a new task", "create a new task with the given text");
 	printf("    %-30s %s\n", "", "(default) lists active tasks");
 	printf("    %-30s %s\n", "--list", "lists active and done tasks");

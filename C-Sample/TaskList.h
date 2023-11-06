@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 
-int	 TaskList(int argc, char* argv[]);
+int	 TaskList();
 
 #ifdef __cplusplus
 }
