@@ -9,6 +9,7 @@ Every record in the DB has four fields:
 * End time
 * Task description
 
-The project is developed by using MS Visual C++ 2015.
-You need to copy the Objectbox.dll from Lib folder to the execution path.
-Do not forget to compile the project in x86 mode because the Objectbox.dll is compiled for x86 architecture.
+The project is developed by using MS Visual C++ 2015 and can be compiled and used in both x64 and x86 modes. 
+You need to copy the dedicated `Objectbox.dll` file from the Lib64 or Lib86 folder to the execution path.
+
+
